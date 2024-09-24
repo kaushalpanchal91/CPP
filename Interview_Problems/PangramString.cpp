@@ -1,10 +1,9 @@
-/*Sept/23/2024
-
 #include <iostream>
 #include <string>
 #include <unordered_set>
 #include <cctype>
-#include <map>
+#include <vector>
+// #include <map>
 
 bool isPangram(const std::string& str) {
     std::unordered_set<char> letters;
@@ -22,6 +21,17 @@ bool isPangram(const std::string& str) {
     return letters.size() == 26;
 }
 
+void s_panGram(std::vector<std::string> pan){
+    std::string op;
+    for(int i=0; i<pan.size(); i++){
+        if(isPangram(pan[i]))
+            op+="1";
+        else
+            op+="0";
+    }
+    std::cout<<op<<std::endl;
+}
+
 int main() {
     std::string input;
 
@@ -33,48 +43,7 @@ int main() {
     } else {
         std::cout << "The string is not a pangram." << std::endl;
     }
+    s_panGram({"qwertyuiopasdfghjklzxcvbnm", "ouysadvhasvdjasdj", "hdvsdhkKJDkhjdsguiDGidguID", "mnbvcxzasdfghjklpoiuytrewq"});
 
     return 0;
 }
-
-
-/* My Code in Ford Coding Interview:
-
-#include <iostream>
-#include <vector>
-#include <string>
-
-string isPangram(vector<std::string> pangram){
-    std::string op ="";
-    int flag =0;
-    int track =0;
-    for (int i=0; i<pangram.size();i++){
-        for (char c:pangram[i]){
-            for(char _c='a'; c<='z';c++){
-                if(c==' ')
-                  flag=1;
-                if(c == _c)
-                  flag=1;
-            }
-            if(flag == 1)
-              track =1;
-            else
-              track =0;
-        }
-
-        if(track == 1)
-          op +="1";
-        else
-          op +="0";
-    }
-}
-
-int main()
-{
-    vector<std::string> p1;
-    p1 = "qwertyuiopasdfghjklzxcvbnm mnbv";
-    std::string result = isPangram(p1);
-    std::cout<<"Hello World";
-
-    return 0;
-} */
